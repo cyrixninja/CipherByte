@@ -81,7 +81,7 @@
             <h2>Transposition Cipher Game</h2>
             <p>Rearrange the letters to reveal the original message:</p>
 
-            <p id="encryptedMessage">UOSIRUC TCA LORDEXEP HTE GRNEDA</p>
+            <p id="encryptedMessage"></p>
 
             <label for="userGuess">Your Guess:</label>
             <input type="text" id="userGuess" placeholder="Enter your rearranged guess">
@@ -101,6 +101,7 @@
         function showTranspositionCipherGame() {
             document.getElementById('caesarCipherGame').style.display = 'none';
             document.getElementById('transpositionCipherGame').style.display = 'block';
+            generateRandomJumbledSentence();
         }
 
         // Caesar Cipher Game Functions
@@ -130,15 +131,64 @@
         }
 
         // Transposition Cipher Game Functions
+        function generateRandomJumbledSentence() {
+            const sentences = [
+                "THE QUICK BROWN FOX JUMPS OVER THE LAZY DOG",
+                "A JOURNEY OF A THOUSAND MILES BEGINS WITH A SINGLE STEP",
+                "WHERE THERE IS LOVE THERE IS LIFE",
+                "TO BE OR NOT TO BE THAT IS THE QUESTION",
+                "ALL THAT GLITTERS IS NOT GOLD"
+            ];
+
+            // Select a random sentence
+            const randomSentence = sentences[Math.floor(Math.random() * sentences.length)];
+
+            // Jumble the sentence
+            const jumbledSentence = jumbleSentence(randomSentence);
+
+            // Display the jumbled sentence
+            document.getElementById('encryptedMessage').innerText = jumbledSentence;
+        }
+
+        function jumbleSentence(sentence) {
+            // Jumble the sentence by reversing each word
+            return sentence
+                .split(' ')
+                .map(word => reverseWord(word))
+                .join(' ');
+        }
+
+        function reverseWord(word) {
+            // Reverse the word
+            return word.split('').reverse().join('');
+        }
+
         function checkTranspositionCipher() {
             const encryptedMessage = document.getElementById('encryptedMessage').innerText;
             const userGuess = document.getElementById('userGuess').value.toUpperCase();
 
-            if (userGuess === "CURIOUS CAT EXPLORED THE GARDEN") {
+            if (userGuess === decryptTranspositionCipher(encryptedMessage)) {
                 document.getElementById('transpositionCipherResult').innerText = "Congratulations! You rearranged the message correctly!";
             } else {
                 document.getElementById('transpositionCipherResult').innerText = "Sorry, the arrangement is incorrect. Try again!";
             }
+        }
+
+        function decryptTranspositionCipher(encryptedMessage) {
+            // Split the words in the encrypted message
+            const words = encryptedMessage.split(' ');
+
+            // Create an array to hold the decrypted words
+            const decryptedWords = [];
+
+            // Decrypt each word by reversing it
+            for (const word of words) {
+                const decryptedWord = reverseWord(word);
+                decryptedWords.push(decryptedWord);
+            }
+
+            // Join the decrypted words to form the original message
+            return decryptedWords.join(' ');
         }
     </script>
 
@@ -149,3 +199,4 @@
     </div>
 </body>
 </html>
+
