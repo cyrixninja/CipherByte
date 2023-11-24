@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Security Awareness Training</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        .training-container {
+            max-width: 800px;
+            margin: 50px auto;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        p {
+            color: #555;
+        }
+
+        ol {
+            color: #333;
+        }
+
+        .video-container {
+            margin-bottom: 20px;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="training-container">
+        <h1>Phishing Awareness </h1>
+        <p>What is a Phishing Attack?</p>
+        <div class="video-container">
+            <iframe width="640" height="360" src="https://www.youtube.com/embed/XBkzBrXlle0" title="Phishing Explained In 6 Minutes | What Is A Phishing Attack? | Phishing Attack | Simplilearn" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        </div>
+        <p>Learn how to identify phishing emails:</p>
+        <ol>
+            <li>Check the sender's email address.</li>
+            <li>Look for grammatical errors and unusual language.</li>
+            <li>Avoid clicking on suspicious links.</li>
+        </ol>
+        <div class="video-container">
+            <iframe width="640" height="360" src="https://www.youtube.com/embed/3wwaYc_Yuhc" title="Email Header Analysis Tutorial | Email Header Analysis Steps | Cyber Security Tutorial | Simplilearn" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        </div>
+        <p>How to Protect Yourself?</p>
+        <ol>
+            <li>Never provide your personal information in response to an unsolicited request.</li>
+            <li>If you believe the contact may be legitimate, contact the financial institution yourself.</li>
+            <li>Never provide your password over the phone or in response to an unsolicited Internet request.</li>
+            <li>Review account statements regularly to ensure all charges are correct. </li>
+        </ol>
+        
+        <p>What to Do if You Fall Victim ?</p>
+        <ol>
+            <li>Contact your financial institution immediately and alert it to the situation.</li>
+            <li>If you have disclosed sensitive information in a phishing attack, you should also contact one of the three major credit bureaus and discuss whether you need to place a fraud alert on your file, which will help prevent thieves from opening a new account in your name.</li>
+           
+           </ol>
+        
+        <button onclick="completeTraining()">Complete Training</button>
+    </div>
+
+    <script>
+        function completeTraining() {
+            // You can track completion, update user status, or perform other actions here
+            alert("Training completed! You are now more aware of phishing threats.");
+        }
+    </script>
+</body>
+</html>
