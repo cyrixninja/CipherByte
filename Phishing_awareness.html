@@ -83,16 +83,105 @@
             <li>Contact your financial institution immediately and alert it to the situation.</li>
             <li>If you have disclosed sensitive information in a phishing attack, you should also contact one of the three major credit bureaus and discuss whether you need to place a fraud alert on your file, which will help prevent thieves from opening a new account in your name.</li>
            
-           </ol>
-        
-        <button onclick="completeTraining()">Complete Training</button>
+           </ol>      
+       
+        }
+        <div id="quiz-container">
+        <h1>Time To Test Your Knowledge!</h1>
+        <div id="quiz"></div>
+        <button onclick="submitQuiz()">Submit Quiz</button>
+        <p id="result"></p>
     </div>
 
     <script>
-        function completeTraining() {
-            // You can track completion, update user status, or perform other actions here
-            alert("Training completed! You are now more aware of phishing threats.");
+        const questions = [
+            {
+                question: 'What is the main purpose of cryptography?',
+                options: ['Data compression', 'Data encryption', 'Data authentication', 'Data storage'],
+                correctAnswer: 'Data encryption'
+            },
+            {
+                question: 'Which cryptographic algorithm is commonly used for secure communication over the internet?',
+                options: ['RSA', 'AES', 'DES', 'SHA-256'],
+                correctAnswer: 'RSA'
+            },
+            {
+                question: 'What is a phishing attack?',
+                options: ['A type of fishing', 'A social engineering attack', 'A malware attack', 'A network attack'],
+                correctAnswer: 'A social engineering attack'
+            },
+            {
+                question: 'What is the purpose of a public key in asymmetric cryptography?',
+                options: ['Encrypt data', 'Decrypt data', 'Both encrypt and decrypt data', 'Generate digital signatures'],
+                correctAnswer: 'Encrypt data'
+            },
+            {
+                question: 'What is the primary goal of a phishing attack?',
+                options: ['Data encryption', 'Data theft', 'Denial of service', 'Network intrusion'],
+                correctAnswer: 'Data theft'
+            }
+        ];
+
+        let currentQuestion = 0;
+        let score = 0;
+
+        function loadQuestion() {
+            const quizContainer = document.getElementById('quiz');
+            const currentQ = questions[currentQuestion];
+
+            const questionElem = document.createElement('div');
+            questionElem.classList.add('question');
+            questionElem.textContent = `Question ${currentQuestion + 1}: ${currentQ.question}`;
+
+            const optionsElem = document.createElement('div');
+            optionsElem.classList.add('options');
+            currentQ.options.forEach((option, index) => {
+                const radio = document.createElement('input');
+                radio.type = 'radio';
+                radio.name = 'answer';
+                radio.value = option;
+
+                const label = document.createElement('label');
+                label.textContent = `${index + 1}. ${option}`;
+
+                optionsElem.appendChild(radio);
+                optionsElem.appendChild(label);
+                optionsElem.appendChild(document.createElement('br'));
+            });
+
+            quizContainer.innerHTML = '';
+            quizContainer.appendChild(questionElem);
+            quizContainer.appendChild(optionsElem);
         }
+
+        function submitQuiz() {
+            const selectedOption = document.querySelector('input[name="answer"]:checked');
+
+            if (selectedOption) {
+                if (selectedOption.value === questions[currentQuestion].correctAnswer) {
+                    score++;
+                }
+
+                currentQuestion++;
+
+                if (currentQuestion < questions.length) {
+                    loadQuestion();
+                } else {
+                    showResult();
+                }
+            } else {
+                alert('Please select an option before submitting.');
+            }
+        }
+
+        function showResult() {
+            const resultElem = document.getElementById('result');
+            resultElem.textContent = `Quiz completed! Your score: ${score} out of ${questions.length}`;
+        }
+
+        // Initial load
+        loadQuestion();
+    </script>
     </script>
 </body>
 </html>
