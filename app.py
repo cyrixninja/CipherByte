@@ -32,6 +32,9 @@ def email():
 def learn():
     return render_template('learn.html', **locals())
 
+@app.route('/phishing', methods=["GET", "POST"])
+def phishing():
+    return render_template('phishing.html', **locals())
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port='5000', debug=True)
