@@ -57,11 +57,11 @@ def check_ssl_certificate(domain):
             s.connect((domain, 443))
             cert = s.getpeercert()
             if not cert["subjectAltName"]:
-                return "The domain does not have a valid SSL certificate. Phishing Alert: This URL may be a phishing attempt"
+                return f"The domain {domain} does not have a valid SSL certificate. Phishing Alert: This URL may be a phishing attempt"
             else:
-                return "The domain has a valid SSL certificate"
+                return f"The domain {domain} has a valid SSL certificate"
     except Exception as e:
-        return "The domain {domain} does not have a valid SSL certificate. Phishing Alert: This URL may be a phishing attempt"
+        return f"The domain {domain} does not have a valid SSL certificate. Phishing Alert: This URL may be a phishing attempt"
 
 
 def check_domain_age(domain):
